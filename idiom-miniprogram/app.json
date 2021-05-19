@@ -1,0 +1,18 @@
+{
+  "pages":[
+    "pages/game/index",
+    "pages/logs/logs"
+  ],
+  "usingComponents": {
+    "mp-dialog": "/miniprogram_npm/weui-miniprogram/dialog/dialog",
+    "mp-toptips":"/miniprogram_npm/weui-miniprogram/toptips/toptips"
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "成语微信接龙",
+    "navigationBarTextStyle":"black"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

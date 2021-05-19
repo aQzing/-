@@ -1,0 +1,54 @@
+/**index.wxss**/
+/* 临时调试用的边框边框 */
+.border{
+  border: 2rpx #ccc solid;
+}
+.game-container{
+  padding: 30rpx;
+  margin:auto 0;
+  height: 100%;
+}
+.bg{
+  position: absolute;
+  z-index: -9999;
+  height: 100%;
+  width: 100%;
+}
+.game-info{
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-around;
+  color: white;
+}
+.game-chat{
+  height: 700rpx;
+  color: rgb(13, 16, 36);
+}
+.game-chat-single{
+  margin-left: 30rpx;
+}
+.game-option{
+  margin-bottom: 30rpx;
+}
+.game-option-btn{
+  display:flex;
+  flex-flow: column;
+  justify-content: center;
+  margin-top:15rpx
+}
+.game-option-tip{
+  margin-top:15rpx;
+  margin-bottom: 15rpx;
+}
+.game-rules-view{
+  text-align: left;
+  font-size: 14px;
+  line-height: 28px;
+}
+.idiom{
+ text-align: center;
+ height: 80rpx;
+}

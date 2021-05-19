@@ -1,0 +1,55 @@
+<!--index.wxml-->
+<image src='./imgs/2.jpg' class="bg" mode="scaleToFill"></image>
+<view class="game-container">
+  
+  <view class="game-info border">
+        <view> 当前关数：{{game.round}}/{{game.totalRound}}  </view>
+        <view>分数：{{game.score}} </view>
+        <view> 道具数量：{{game.toolCount}}</view>                       
+  </view>
+  <scroll-view class="game-chat border" scroll-y="true">
+    <view class="game-chat-single" wx:for="{{chatData}}" wx:for-item="item">
+      <block wx:if="{{item.type=='1'}}">
+        <label>电脑：</label><text>{{item.content}}</text>
+      </block>
+      <block wx:elif="{{item.type=='2'}}">
+        <label>我：</label><text>{{item.content}}</text>
+      </block>
+    </view>
+   
+  </scroll-view>
+  <view class="game-option border" >
+    <input disabled="{{inputDisabled}}" type="text" bindblur="userInputBlur" confirm-type="done" placeholder="请输入成语" class="idiom border" value="{{userInput}}"/>
+    <view class="game-option-btn">
+      <view class="game-option-send">
+        <button type="primary" bindtap="sendBtn" size="default">确定</button>
+      </view>    
+      <view class="game-option-tip">
+        <button type="primary" bindtap="useTool" size="default">使用道具</button>
+      </view>
+    </view>
+  </view>
+
+<mp-dialog title="游戏规则" show="{{game.ruleDialog.show}}" bindbuttontap="tapRuleOkButton" buttons="{{[{text: '确认'}]}}"   mask-closable="{{false}}">
+    <view class="game-rules-view">
+      <text>
+      1、游戏总共20关\n 2、每一关随机出现一个成语\n3、通关模式加一关就要多一个成语\n4、连续通关两关系统会奖励一个提示道具
+      </text>
+    </view>
+</mp-dialog>
+<mp-dialog title="{{game.roundDialog.title}}" show="{{game.roundDialog.show}}" bindbuttontap="taproundDialogButton" buttons="{{game.roundDialog.buttons}}" mask-closable="{{false}}">
+    <view class="game-rules-view">
+      <text>
+      {{game.roundDialog.content}}
+      </text>
+    </view>
+</mp-dialog>
+<mp-dialog title="{{game.dialog.title}}" show="{{game.dialog.show}}" bindbuttontap="tapDialogButton" buttons="{{game.dialog.buttons}}"  mask-closable="{{false}}">
+    <view class="game-rules-view">
+      <text>
+      {{game.dialog.content}}
+      </text>
+    </view>
+</mp-dialog>
+<mp-toptips msg="{{game.toptip.msg}}" type="{{game.toptip.type}}" show="{{game.toptip.show}}"></mp-toptips>
+</view>

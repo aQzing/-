@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qzing.dao.CyDao">
+  <resultMap id="BaseResultMap" type="com.qzing.entity.Cy">
+    <id column="ID" jdbcType="DOUBLE" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="spell" jdbcType="VARCHAR" property="spell" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="derivation" jdbcType="VARCHAR" property="derivation" />
+    <result column="samples" jdbcType="VARCHAR" property="samples" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, `name`, spell, content, derivation, samples
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Double" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from cy
+    where ID = #{id,jdbcType=DOUBLE}
+  </select>
+  <select id="selectAllCys" resultType="com.qzing.entity.Cy">
+    select
+    <include refid="Base_Column_List"/>
+    from cy
+    where
+    char_length(name)=4
+  </select>
+  <select id="selectCysByHead" resultType="com.qzing.entity.Cy">
+    select
+    <include refid="Base_Column_List"/>
+    from cy
+    <where>
+      <if test="head != null and head != '' ">
+        and name like CONCAT(#{head},'%')
+      </if>
+      and char_length(name)=4
+    </where>
+  </select>
+
+</mapper>
